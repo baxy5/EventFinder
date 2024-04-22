@@ -1,4 +1,6 @@
 <?php
+require_once ('config.php');
+
 // Fetch data from the API
 $url = "https://fakestoreapi.in/api/products";
 $data = file_get_contents($url);

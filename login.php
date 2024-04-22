@@ -3,21 +3,19 @@ require_once ('config.php');
 
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
-    $conn = new PDO(
-        'mysql:host=localhost;dbname=' . DB_NAME . ';charset=utf8',
-        DB_NAME,
-        DB_PASS
-    );
+    $conn = get_connection();
 
     $sql = "SELECT * FROM auth WHERE email = '{$_POST['email']}' AND password = SHA1('{$_POST['password']}')";
 
     $res = $conn->query($sql);
     $records = $res->fetchAll(PDO::FETCH_ASSOC);
 
-    if (!empty($records)) {
+    if (count($records) === 1) {
+        $_SESSION['isLoggedIn'] = true;
+        $_SESSION['email'] = $records[0]['email'];
         header('Location: index.php');
-        exit;
     }
+
 }
 
 ?>

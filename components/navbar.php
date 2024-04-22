@@ -17,14 +17,26 @@
                     <a class="nav-link" href="/demo/kosar">Kosár</a>
                 </li>
             </ul>
-            <div>
-                <a href="/demo/login.php">
-                    <button type="button" class="btn btn-primary">Bejelentkezés</button>
-                </a>
-                <a href="/demo/regist.php">
-                    <button type="button" class="btn btn-primary">Regisztráció</button>
-                </a>
-            </div>
+            <?php if (!$is_logged_in) { ?>
+                <div>
+                    <a href="/demo/login.php">
+                        <button type="button" class="btn btn-primary">Bejelentkezés</button>
+                    </a>
+                    <a href="/demo/regist.php">
+                        <button type="button" class="btn btn-primary">Regisztráció</button>
+                    </a>
+                </div>
+            <?php } else { ?>
+                <!-- TODO: Name kéne majd -->
+                <p>
+                    <?php echo $_SESSION['email']; ?>
+                </p>
+                <div>
+                    <a href="/demo/logout.php">
+                        <button type="button" class="btn btn-warning">Kijelentkezés</button>
+                    </a>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </nav>
