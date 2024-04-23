@@ -11,7 +11,7 @@
                     <a class="nav-link active" aria-current="page" href="/demo/">Termékek</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/demo/kedvencek">Kedvencek</a>
+                    <a class="nav-link" href="/demo/kedvencek.php">Kedvencek</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/demo/kosar">Kosár</a>
@@ -27,9 +27,10 @@
                     </a>
                 </div>
             <?php } else { ?>
-                <!-- TODO: Name kéne majd -->
-                <p>
-                    <?php echo $_SESSION['email']; ?>
+                <p class="lead h-100 pe-4 pt-2">
+                    <strong>
+                        <?php echo $_SESSION['name']; ?>
+                    </strong>
                 </p>
                 <div>
                     <a href="/demo/logout.php">

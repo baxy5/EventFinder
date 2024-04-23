@@ -13,6 +13,26 @@ if ($data === false) {
 // Decode JSON response
 $products = json_decode($data, true);
 
+/* function saveItemToFavourite($record)
+{
+    $conn = get_connection();
+
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+    $sql = "INSERT INTO items (title, description, price, img, user_id) VALUES (:title, :description, :price, :img, :user_id)";
+
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindParam(':title', $record['title']);
+    $stmt->bindParam(':description', $record['description']);
+    $stmt->bindParam(':price', $record['price']);
+    $stmt->bindParam(':img', $record['img']);
+    $stmt->bindParam(':user_id', $_SESSION['id']);
+
+    $stmt->execute();
+} */
+
 ?>
 
 
@@ -40,8 +60,9 @@ $products = json_decode($data, true);
                     <h5 class="card-title"><?php echo $product['title']; ?></h5>
                     <p class="card-text"><?php echo $product['description']; ?></p>
                     <a href="#" class="btn btn-primary">$<?php echo $product['price']; ?></a>
-                    <a href="#" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <a onclick="saveItemToFavourite($product)" href="#" class="btn btn-primary"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
                             <path
                                 d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
                         </svg></a>

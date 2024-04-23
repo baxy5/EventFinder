@@ -5,14 +5,15 @@ require_once ('config.php');
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $conn = get_connection();
 
-    $sql = "SELECT * FROM auth WHERE email = '{$_POST['email']}' AND password = SHA1('{$_POST['password']}')";
+    $sql = "SELECT * FROM users WHERE email = '{$_POST['email']}' AND password = SHA1('{$_POST['password']}')";
 
     $res = $conn->query($sql);
     $records = $res->fetchAll(PDO::FETCH_ASSOC);
 
     if (count($records) === 1) {
         $_SESSION['isLoggedIn'] = true;
-        $_SESSION['email'] = $records[0]['email'];
+        $_SESSION['name'] = $records[0]['name'];
+        $_SESSION['id'] = $records[0]['id'];
         header('Location: index.php');
     }
 

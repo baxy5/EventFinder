@@ -1,22 +1,24 @@
 <?php
 require_once ('config.php');
 
-if (isset($_POST['email']) && isset($_POST['password'])) {
-    $conn = new PDO(
-        'mysql:host=localhost;dbname=' . DB_NAME . ';charset=utf8',
-        DB_NAME,
-        DB_PASS
-    );
+if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name'])) {
+    $conn = get_connection();
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
     $hashed_password = sha1($_POST['password']);
 
-    $sql = "INSERT INTO auth (email, password) VALUES  ( '{$_POST['email']}', '{$hashed_password}' )";
+    $sql = "INSERT INTO users (name, email, password) VALUES  ('{$_POST['name']}' , '{$_POST['email']}', '{$hashed_password}' )";
     $res = $conn->query($sql);
 
+
     $conn = null;
+
+    if ($res) {
+        header('Location: login.php');
+        exit();
+    }
 }
 
 ?>
@@ -39,6 +41,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     <div class="container pt-5">
         <h1>Sign up</h1>
         <form action="" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Név</label>
+                <input type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp">
+            </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email cím</label>
                 <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
