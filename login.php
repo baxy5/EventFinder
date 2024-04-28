@@ -2,10 +2,10 @@
 require_once ('config.php');
 
 
-if (isset($_POST['email']) && isset($_POST['password'])) {
+if (isset($_POST['name']) && isset($_POST['password'])) {
     $conn = get_connection();
 
-    $sql = "SELECT * FROM users WHERE email = '{$_POST['email']}' AND password = SHA1('{$_POST['password']}')";
+    $sql = "SELECT * FROM users WHERE name = '{$_POST['name']}' AND password = SHA1('{$_POST['password']}')";
 
     $res = $conn->query($sql);
     $records = $res->fetchAll(PDO::FETCH_ASSOC);
@@ -40,8 +40,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         <h1>Login</h1>
         <form action="" method="POST">
             <div class="mb-3">
-                <label for="email" class="form-label">Email cím</label>
-                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <label for="name" class="form-label">Felhasználó név</label>
+                <input type="name" name="name" class="form-control" id="name" aria-describedby="nameHelp">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Jelszó</label>
