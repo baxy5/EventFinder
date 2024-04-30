@@ -3,6 +3,7 @@ require_once ('config.php');
 
 $products = [];
 
+
 if (!$is_logged_in || $is_logged_in !== true) {
     header('Location: login.php');
     exit;
@@ -15,6 +16,7 @@ if (!$is_logged_in || $is_logged_in !== true) {
 
     $products = $res->fetchAll(PDO::FETCH_ASSOC);
 }
+
 
 ?>
 
@@ -30,10 +32,11 @@ if (!$is_logged_in || $is_logged_in !== true) {
 </head>
 
 <body>
+    <?php include 'components/modal.php'; ?>
     <?php include 'components/navbar.php'; ?>
 
     <h1>Kedvelt termékek:</h1>
-    <div class="d-flex flex-row flex-wrap">
+    <div class="d-flex flex-row flex-wrap" style="height: 80vh;">
         <?php foreach ($products as $product): ?>
             <div class="card" style="width: 18rem;">
                 <img src="<?php echo $product['img']; ?>" class="card-img-top">
@@ -49,6 +52,8 @@ if (!$is_logged_in || $is_logged_in !== true) {
             </div>
         <?php endforeach; ?>
     </div>
+
+    <?php include 'components/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

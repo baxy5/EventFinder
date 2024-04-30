@@ -38,8 +38,8 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name'])
 <body>
     <?php include 'components/navbar.php'; ?>
 
-    <div class="container pt-5">
-        <h1>Sign up</h1>
+    <div class="container pt-5" style="height: 80vh;">
+        <h1>Regisztráció</h1>
         <form action="" method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label">Név</label>
@@ -56,6 +56,8 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name'])
             <button type="submit" class="btn btn-primary">Regisztráció</button>
         </form>
     </div>
+
+    <?php include 'components/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

@@ -36,8 +36,8 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
 <body>
     <?php include 'components/navbar.php'; ?>
 
-    <div class="container pt-5">
-        <h1>Login</h1>
+    <div class="container pt-5" style="height: 80vh;">
+        <h1>Bejelentkezés</h1>
         <form action="" method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label">Felhasználó név</label>
@@ -50,6 +50,8 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
             <button type="submit" class="btn btn-primary">Bejelentkezés</button>
         </form>
     </div>
+
+    <?php include 'components/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
